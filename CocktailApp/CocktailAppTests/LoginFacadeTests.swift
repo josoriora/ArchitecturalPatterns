@@ -21,16 +21,21 @@ class LoginFacadeTests: XCTestCase {
         let email = "julian@test.com"
         let password = "12345"
         let loginFacade = LoginFacade()
-        let response = loginFacade.loginWith(email: email, password: password)
+        let responseRegistration = loginFacade.loginWith(email: email, password: password)
         
-        XCTAssertEqual(response.status, .registration)
-        XCTAssertEqual(response.user?.email, email)
+        XCTAssertEqual(responseRegistration.status, .registration)
+        XCTAssertEqual(responseRegistration.user?.email, email)
+        
+        let responseLogin = loginFacade.loginWith(email: email, password: password)
+        XCTAssertEqual(responseLogin.status, .login)
+        XCTAssertEqual(responseLogin.user?.email, email)
     }
 
 }
 
 enum LoginStatus {
     case registration
+    case login
     case unknown
 }
 
@@ -40,7 +45,6 @@ struct User {
 }
 
 class LoginFacade {
-    
     struct LoginResponse {
         let status: LoginStatus
         let user: User?
