@@ -20,7 +20,7 @@ class LoginFacadeTests: XCTestCase {
     func testAccountCreation() throws {
         let email = "julian@test.com"
         let password = "12345"
-        let loginFacade = LoginFacade()
+        let loginFacade = LoginFacade(backEndStore: UserDefaultsBackEndStore())
         let registrationExpectation = self.expectation(description: "registration")
         let loginExpectation = self.expectation(description: "login")
         
@@ -62,7 +62,28 @@ class LoginFacade {
         let user: User?
     }
     
+    let backEndStore: BackEndStore
+    
+    init(backEndStore: BackEndStore) {
+        self.backEndStore = backEndStore
+    }
+    
     func loginWith(email: String, password: String, response: LoginClosure) {
+        
+    }
+}
+
+protocol BackEndStore {
+    func fetchUserWith(email: String, response: (User?) -> () )
+    func saveUser(user: User, response: (Bool) ->())
+}
+
+struct UserDefaultsBackEndStore: BackEndStore {
+    func fetchUserWith(email: String, response: (User?) -> ()) {
+        
+    }
+    
+    func saveUser(user: User, response: (Bool) -> ()) {
         
     }
 }
