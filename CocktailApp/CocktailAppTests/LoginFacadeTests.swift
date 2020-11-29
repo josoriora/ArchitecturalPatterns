@@ -17,18 +17,36 @@ class LoginFacadeTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testAccountCreation() {
+    func testAccountCreation() throws {
         let email = "julian@test.com"
         let password = "12345"
-        let success = LoginFacade.loginWith(email: email, password: password)
+        let loginFacade = LoginFacade()
+        let response = loginFacade.loginWith(email: email, password: password)
         
-        XCTAssertTrue(success)
+        XCTAssertEqual(response.status, .registration)
+        XCTAssertEqual(response.user?.email, email)
     }
 
 }
 
+enum LoginStatus {
+    case registration
+    case unknown
+}
+
+struct User {
+    let email: String
+    let password: String
+}
+
 class LoginFacade {
-    class func loginWith(email: String, password: String) -> Bool {
-        return false
+    
+    struct LoginResponse {
+        let status: LoginStatus
+        let user: User?
+    }
+    
+    func loginWith(email: String, password: String) -> LoginResponse {
+        return LoginResponse(status: .unknown, user: nil)
     }
 }
