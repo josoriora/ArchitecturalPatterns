@@ -21,14 +21,24 @@ class LoginFacadeTests: XCTestCase {
         let email = "julian@test.com"
         let password = "12345"
         let loginFacade = LoginFacade()
-        let responseRegistration = loginFacade.loginWith(email: email, password: password)
+        let registrationExpectation = self.expectation(description: "registration")
+        let loginExpectation = self.expectation(description: "login")
         
-        XCTAssertEqual(responseRegistration.status, .registration)
-        XCTAssertEqual(responseRegistration.user?.email, email)
+        loginFacade.loginWith(email: email,
+                              password: password) { (response: LoginFacade.LoginResponse) in
+            XCTAssertEqual(response.status, .registration)
+            XCTAssertEqual(response.user?.email, email)
+            registrationExpectation.fulfill()
+        }
         
-        let responseLogin = loginFacade.loginWith(email: email, password: password)
-        XCTAssertEqual(responseLogin.status, .login)
-        XCTAssertEqual(responseLogin.user?.email, email)
+        loginFacade.loginWith(email: email,
+                              password: password) { (response: LoginFacade.LoginResponse) in
+            XCTAssertEqual(response.status, .login)
+            XCTAssertEqual(response.user?.email, email)
+            loginExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 0.5, handler: nil)
     }
 
 }
@@ -45,12 +55,14 @@ struct User {
 }
 
 class LoginFacade {
+    typealias LoginClosure = (LoginResponse) -> ()
+    
     struct LoginResponse {
         let status: LoginStatus
         let user: User?
     }
     
-    func loginWith(email: String, password: String) -> LoginResponse {
-        return LoginResponse(status: .unknown, user: nil)
+    func loginWith(email: String, password: String, response: LoginClosure) {
+        
     }
 }
