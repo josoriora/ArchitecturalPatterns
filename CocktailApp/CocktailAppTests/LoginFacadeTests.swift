@@ -14,14 +14,28 @@ class LoginFacadeTests: XCTestCase {
     
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
-        UserDefaults.standard.removeObject(forKey: email)
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        UserDefaults.standard.removeObject(forKey: email)
     }
 
     func testAccountCreation() throws {
+        let loginFacade = LoginFacade(backEndStore: UserDefaultsBackEndStore())
+        let registrationExpectation = self.expectation(description: "registration")
+
+        loginFacade.loginWith(email: email,
+                              password: password) { (response: LoginFacade.LoginResponse) in
+            XCTAssertEqual(response.status, .registration)
+            XCTAssertEqual(response.user?.email, email)
+            registrationExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 0.5, handler: nil)
+    }
+    
+    func testAccountLogin() {
         let loginFacade = LoginFacade(backEndStore: UserDefaultsBackEndStore())
         let registrationExpectation = self.expectation(description: "registration")
         let loginExpectation = self.expectation(description: "login")
@@ -42,5 +56,26 @@ class LoginFacadeTests: XCTestCase {
         
         self.waitForExpectations(timeout: 0.5, handler: nil)
     }
-
+    
+    func testAccountWrongPassword() {
+        let loginFacade = LoginFacade(backEndStore: UserDefaultsBackEndStore())
+        let registrationExpectation = self.expectation(description: "registration")
+        let loginExpectation = self.expectation(description: "login")
+        
+        loginFacade.loginWith(email: email,
+                              password: password) { (response: LoginFacade.LoginResponse) in
+            XCTAssertEqual(response.status, .registration)
+            XCTAssertEqual(response.user?.email, email)
+            registrationExpectation.fulfill()
+        }
+        
+        loginFacade.loginWith(email: email,
+                              password: String(password.dropLast())) { (response: LoginFacade.LoginResponse) in
+            XCTAssertEqual(response.status, .authError)
+            XCTAssertNil(response.user)
+            loginExpectation.fulfill()
+        }
+        
+        self.waitForExpectations(timeout: 0.5, handler: nil)
+    }
 }

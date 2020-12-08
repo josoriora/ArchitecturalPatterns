@@ -29,11 +29,18 @@ class LoginFacade {
     }
     
     func loginWith(email: String, password: String, response: LoginClosure) {
-        self.backEndStore.fetchUserWith(email: email) { (user: User?) in
+        self.backEndStore.fetchUserWith(email: email) { [weak self] (user: User?) in
             guard let user = user  else {
                 let newUser = User(email: email, password: password)
                 
-                self.backEndStore.saveUser(user: User(email: email, password: password)) { (success: Bool) in
+                guard let weakSelf = self else {
+                    let regResponse = LoginResponse(status: .unknown, user: nil)
+                    
+                    response(regResponse)
+                    return
+                }
+                
+                weakSelf.backEndStore.saveUser(user: User(email: email, password: password)) { (success: Bool) in
                     if success {
                         let regResponse = LoginResponse(status: .registration, user: newUser)
                         
