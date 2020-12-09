@@ -82,7 +82,7 @@ class LoginControllerTests: XCTestCase {
     func testValidPassword() {
         let loginController = LoginController(email: email, password: "P4s")
         
-        XCTAssertFalse(loginController.isValidPassword)
+        XCTAssertTrue(loginController.isValidPassword)
     }
 }
 
@@ -99,6 +99,18 @@ struct LoginController {
     }
     
     var isValidPassword: Bool {
-        return false
+        guard let password = self.password, password.count >= 3 else { return false }
+        
+        var upperCaseCount = 0
+        var lowerCaseCount = 0
+        var numberCount = 0
+        
+        password.forEach { (character: Character) in
+            upperCaseCount += character.isUppercase ? 1 : 0
+            lowerCaseCount += character.isLowercase ? 1 : 0
+            numberCount += character.isNumber ? 1 : 0
+        }
+        
+        return upperCaseCount > 0 && lowerCaseCount > 0 && numberCount > 0
     }
 }
