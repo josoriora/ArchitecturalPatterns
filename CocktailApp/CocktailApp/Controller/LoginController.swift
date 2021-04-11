@@ -10,6 +10,13 @@ import Foundation
 struct LoginController {
     let email: String?
     let password: String?
+    let loginOperations: LoginOperationsProtocol
+    
+    init(loginOperations: LoginOperationsProtocol, email: String?, password: String?) {
+        self.loginOperations = loginOperations
+        self.email = email
+        self.password = password
+    }
     
     var isValidEmail: Bool {
         guard let email = self.email else { return false }
@@ -34,4 +41,21 @@ struct LoginController {
         
         return upperCaseCount > 0 && lowerCaseCount > 0 && numberCount > 0
     }
+    
+    func login(completion: @escaping (LoginControllerResponse) -> ()) {
+        guard
+            let email = self.email, self.isValidEmail,
+            let password = self.password, self.isValidPassword
+        else {
+            return
+        }
+        
+        loginOperations.loginWith(email: email, password: password) { (loginResponse: LoginResponse) in
+            completion(LoginControllerResponse(status: loginResponse.status))
+        }
+    }
+}
+
+struct LoginControllerResponse {
+    let status: LoginStatus
 }

@@ -26,7 +26,7 @@ class LoginFacadeTests: XCTestCase {
         let registrationExpectation = self.expectation(description: "registration")
 
         loginFacade.loginWith(email: email,
-                              password: password) { (response: LoginFacade.LoginResponse) in
+                              password: password) { (response: LoginResponse) in
             XCTAssertEqual(response.status, .registration)
             XCTAssertEqual(response.user?.email, email)
             registrationExpectation.fulfill()
@@ -41,14 +41,14 @@ class LoginFacadeTests: XCTestCase {
         let loginExpectation = self.expectation(description: "login")
         
         loginFacade.loginWith(email: email,
-                              password: password) { (response: LoginFacade.LoginResponse) in
+                              password: password) { (response: LoginResponse) in
             XCTAssertEqual(response.status, .registration)
             XCTAssertEqual(response.user?.email, email)
             registrationExpectation.fulfill()
         }
         
         loginFacade.loginWith(email: email,
-                              password: password) { (response: LoginFacade.LoginResponse) in
+                              password: password) { (response: LoginResponse) in
             XCTAssertEqual(response.status, .login)
             XCTAssertEqual(response.user?.email, email)
             loginExpectation.fulfill()
@@ -63,14 +63,14 @@ class LoginFacadeTests: XCTestCase {
         let loginExpectation = self.expectation(description: "login")
         
         loginFacade.loginWith(email: email,
-                              password: password) { (response: LoginFacade.LoginResponse) in
+                              password: password) { (response: LoginResponse) in
             XCTAssertEqual(response.status, .registration)
             XCTAssertEqual(response.user?.email, email)
             registrationExpectation.fulfill()
         }
         
         loginFacade.loginWith(email: email,
-                              password: String(password.dropLast())) { (response: LoginFacade.LoginResponse) in
+                              password: String(password.dropLast())) { (response: LoginResponse) in
             XCTAssertEqual(response.status, .authError)
             XCTAssertNil(response.user)
             loginExpectation.fulfill()

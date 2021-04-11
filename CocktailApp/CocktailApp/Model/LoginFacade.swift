@@ -7,21 +7,10 @@
 
 import Foundation
 
-enum LoginStatus {
-    case registration
-    case login
-    case unknown
-    case authError
-}
 
-class LoginFacade {
-    typealias LoginClosure = (LoginResponse) -> ()
-    
-    struct LoginResponse {
-        let status: LoginStatus
-        let user: User?
-    }
-    
+
+class LoginFacade: LoginOperationsProtocol {
+
     let backEndStore: BackEndStore
     
     init(backEndStore: BackEndStore) {
