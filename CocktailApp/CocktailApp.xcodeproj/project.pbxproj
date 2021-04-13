@@ -14,7 +14,7 @@
 		3E464FE725AA328400A7E69C /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E464FE625AA328400A7E69C /* LoginController.swift */; };
 		3E50F3C725743E3B00E86CD7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F3C625743E3B00E86CD7 /* AppDelegate.swift */; };
 		3E50F3C925743E3B00E86CD7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F3C825743E3B00E86CD7 /* SceneDelegate.swift */; };
-		3E50F3CB25743E3B00E86CD7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F3CA25743E3B00E86CD7 /* ViewController.swift */; };
+		3E50F3CB25743E3B00E86CD7 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F3CA25743E3B00E86CD7 /* LoginViewController.swift */; };
 		3E50F3CE25743E3B00E86CD7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E50F3CC25743E3B00E86CD7 /* Main.storyboard */; };
 		3E50F3D025743E3B00E86CD7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3E50F3CF25743E3B00E86CD7 /* Assets.xcassets */; };
 		3E50F3D325743E3B00E86CD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3E50F3D125743E3B00E86CD7 /* LaunchScreen.storyboard */; };
@@ -42,7 +42,7 @@
 		3E50F3C325743E3B00E86CD7 /* CocktailApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CocktailApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E50F3C625743E3B00E86CD7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3E50F3C825743E3B00E86CD7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		3E50F3CA25743E3B00E86CD7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3E50F3CA25743E3B00E86CD7 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3E50F3CD25743E3B00E86CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3E50F3CF25743E3B00E86CD7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3E50F3D225743E3B00E86CD7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 			children = (
 				3E50F3C625743E3B00E86CD7 /* AppDelegate.swift */,
 				3E50F3C825743E3B00E86CD7 /* SceneDelegate.swift */,
-				3E50F3CA25743E3B00E86CD7 /* ViewController.swift */,
+				3E50F3CA25743E3B00E86CD7 /* LoginViewController.swift */,
 				3E50F3CC25743E3B00E86CD7 /* Main.storyboard */,
 				3E50F3CF25743E3B00E86CD7 /* Assets.xcassets */,
 				3E50F3D125743E3B00E86CD7 /* LaunchScreen.storyboard */,
@@ -239,7 +239,7 @@
 			files = (
 				3EA7C9EB2623B55300678489 /* LoginOperationsProtocol.swift in Sources */,
 				3E0662C92577DAA7004C62E2 /* BackEndStoreProtocol.swift in Sources */,
-				3E50F3CB25743E3B00E86CD7 /* ViewController.swift in Sources */,
+				3E50F3CB25743E3B00E86CD7 /* LoginViewController.swift in Sources */,
 				3E0662BC2577D9CA004C62E2 /* LoginFacade.swift in Sources */,
 				3E0662CE2577DADF004C62E2 /* UserDefaultsBackEndStore.swift in Sources */,
 				3E50F3C725743E3B00E86CD7 /* AppDelegate.swift in Sources */,
