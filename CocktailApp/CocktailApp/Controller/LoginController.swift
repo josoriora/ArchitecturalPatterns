@@ -8,8 +8,8 @@
 import Foundation
 
 struct LoginController {
-    let email: String?
-    let password: String?
+    var email: String?
+    var password: String?
     let loginOperations: LoginOperationsProtocol
     
     init(loginOperations: LoginOperationsProtocol, email: String?, password: String?) {
