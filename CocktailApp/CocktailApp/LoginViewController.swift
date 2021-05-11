@@ -49,12 +49,6 @@ class LoginViewController: UIViewController {
         }
     }
 
-    /*
-     case registration
-     case login
-     case unknown
-     case authError
-     */
     @discardableResult
     func defineLoginButtonState() -> UIControl.State {
         let isEnabled = loginController.isValidPassword && loginController.isValidEmail
@@ -74,14 +68,25 @@ extension LoginViewController: UITextFieldDelegate {
     }
     
     func textFieldDidEndEditing(_ textField: UITextField) {
+        updateLoginControllerWithTextField(textField, text: textField.text)
+        textField.resignFirstResponder()
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let updatedString = (textField.text as NSString?)?.replacingCharacters(in: range, with: string)
+        
+        updateLoginControllerWithTextField(textField, text: updatedString)
+        return true
+    }
+    
+    private func updateLoginControllerWithTextField(_ textField: UITextField, text: String?) {
         if textField == emailTextField {
-            loginController.email = textField.text
+            loginController.email = text
         } else {
-            loginController.password = textField.text
+            loginController.password = text
         }
         
         self.defineLoginButtonState()
-        textField.resignFirstResponder()
     }
     
 }
