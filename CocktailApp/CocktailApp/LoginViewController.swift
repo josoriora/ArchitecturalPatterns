@@ -27,9 +27,34 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func onLoginTap(_ sender: UIButton) {
-        
+        loginController.login { [weak self] (response :LoginControllerResponse) in
+            var text: String
+            
+            switch response.status {
+            case .registration:
+                text = "Registration"
+            case .login:
+                text = "login"
+            case .unknown:
+                text = "unknown"
+            case .authError:
+                text = "authError"
+            }
+            
+            let alert = UIAlertController(title: text, message: "message", preferredStyle: .alert)
+            
+            alert.addAction(UIAlertAction(title: "Yes", style: .default, handler: nil))
+            
+            self?.present(alert, animated: true)
+        }
     }
-    
+
+    /*
+     case registration
+     case login
+     case unknown
+     case authError
+     */
     @discardableResult
     func defineLoginButtonState() -> UIControl.State {
         let isEnabled = loginController.isValidPassword && loginController.isValidEmail
