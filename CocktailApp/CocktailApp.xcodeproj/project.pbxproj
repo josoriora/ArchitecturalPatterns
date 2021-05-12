@@ -21,6 +21,10 @@
 		3E50F4052574405E00E86CD7 /* LoginFacadeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E50F4042574405E00E86CD7 /* LoginFacadeTests.swift */; };
 		3EA7C9EB2623B55300678489 /* LoginOperationsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EA7C9EA2623B55300678489 /* LoginOperationsProtocol.swift */; };
 		3ED8F5982580435300989E9F /* LoginControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ED8F5972580435300989E9F /* LoginControllerTests.swift */; };
+		76DB1753264C843200997EAD /* EmailValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB1752264C843200997EAD /* EmailValidatorProtocol.swift */; };
+		76DB1757264C88BD00997EAD /* PasswordValidatorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB1756264C88BD00997EAD /* PasswordValidatorProtocol.swift */; };
+		76DB175F264C8DDB00997EAD /* EmailValidatorImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB175E264C8DDB00997EAD /* EmailValidatorImplTests.swift */; };
+		76DB1763264C915300997EAD /* PasswordValidatorImplTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DB1762264C915300997EAD /* PasswordValidatorImplTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		3E50F4042574405E00E86CD7 /* LoginFacadeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginFacadeTests.swift; sourceTree = "<group>"; };
 		3EA7C9EA2623B55300678489 /* LoginOperationsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginOperationsProtocol.swift; sourceTree = "<group>"; };
 		3ED8F5972580435300989E9F /* LoginControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginControllerTests.swift; sourceTree = "<group>"; };
+		76DB1752264C843200997EAD /* EmailValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorProtocol.swift; sourceTree = "<group>"; };
+		76DB1756264C88BD00997EAD /* PasswordValidatorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidatorProtocol.swift; sourceTree = "<group>"; };
+		76DB175E264C8DDB00997EAD /* EmailValidatorImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidatorImplTests.swift; sourceTree = "<group>"; };
+		76DB1762264C915300997EAD /* PasswordValidatorImplTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordValidatorImplTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +96,8 @@
 			isa = PBXGroup;
 			children = (
 				3E464FE625AA328400A7E69C /* LoginController.swift */,
+				76DB1752264C843200997EAD /* EmailValidatorProtocol.swift */,
+				76DB1756264C88BD00997EAD /* PasswordValidatorProtocol.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -131,6 +141,8 @@
 			children = (
 				3E50F3DF25743E3C00E86CD7 /* Info.plist */,
 				3E50F4042574405E00E86CD7 /* LoginFacadeTests.swift */,
+				76DB175E264C8DDB00997EAD /* EmailValidatorImplTests.swift */,
+				76DB1762264C915300997EAD /* PasswordValidatorImplTests.swift */,
 				3ED8F5972580435300989E9F /* LoginControllerTests.swift */,
 			);
 			path = CocktailAppTests;
@@ -188,7 +200,7 @@
 					};
 					3E50F3D825743E3C00E86CD7 = {
 						CreatedOnToolsVersion = 12.0;
-						LastSwiftMigration = 1200;
+						LastSwiftMigration = 1230;
 						TestTargetID = 3E50F3C225743E3B00E86CD7;
 					};
 				};
@@ -241,6 +253,8 @@
 				3E0662C92577DAA7004C62E2 /* BackEndStoreProtocol.swift in Sources */,
 				3E50F3CB25743E3B00E86CD7 /* LoginViewController.swift in Sources */,
 				3E0662BC2577D9CA004C62E2 /* LoginFacade.swift in Sources */,
+				76DB1753264C843200997EAD /* EmailValidatorProtocol.swift in Sources */,
+				76DB1757264C88BD00997EAD /* PasswordValidatorProtocol.swift in Sources */,
 				3E0662CE2577DADF004C62E2 /* UserDefaultsBackEndStore.swift in Sources */,
 				3E50F3C725743E3B00E86CD7 /* AppDelegate.swift in Sources */,
 				3E464FE725AA328400A7E69C /* LoginController.swift in Sources */,
@@ -255,6 +269,8 @@
 			files = (
 				3E50F4052574405E00E86CD7 /* LoginFacadeTests.swift in Sources */,
 				3ED8F5982580435300989E9F /* LoginControllerTests.swift in Sources */,
+				76DB1763264C915300997EAD /* PasswordValidatorImplTests.swift in Sources */,
+				76DB175F264C8DDB00997EAD /* EmailValidatorImplTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

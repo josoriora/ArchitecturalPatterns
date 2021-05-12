@@ -29,22 +29,14 @@ class LoginControllerTests: XCTestCase {
         XCTAssertNotNil(loginController)
     }
     
-    func testInvalidNilEmail() throws {
+    func testInvalidEmail() throws {
         let loginController = LoginController(loginOperations: mockLoginOperations,
                                               email: nil,
                                               password: password)
         
         XCTAssertFalse(loginController.isValidEmail)
     }
-    
-    func testInvalidStringEmail() throws {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: "email",
-                                              password: password)
-        
-        XCTAssertFalse(loginController.isValidEmail)
-    }
-    
+   
     func testValidEmail() throws {
         let loginController = LoginController(loginOperations: mockLoginOperations,
                                               email: email,
@@ -53,50 +45,10 @@ class LoginControllerTests: XCTestCase {
         XCTAssertTrue(loginController.isValidEmail)
     }
     
-    func testInvalidNilPassword() {
+    func testInvalidPassword() {
         let loginController = LoginController(loginOperations: mockLoginOperations,
                                               email: email,
                                               password: nil)
-        
-        XCTAssertFalse(loginController.isValidPassword)
-    }
-    
-    func testInvalidStringPassword() {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: email,
-                                              password: "pass")
-               
-        XCTAssertFalse(loginController.isValidPassword)
-    }
-    
-    func testInvalidOneUpperCasePassword() {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: email,
-                                              password: "P")
-        
-        XCTAssertFalse(loginController.isValidPassword)
-    }
-    
-    func testInvalidOneUpperCaseOneLowerCasePassword() {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: email,
-                                              password: "Pa")
-        
-        XCTAssertFalse(loginController.isValidPassword)
-    }
-    
-    func testInvalidOneUpperCaseOneNumberPassword() {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: email,
-                                              password: "P4")
-        
-        XCTAssertFalse(loginController.isValidPassword)
-    }
-    
-    func testInvalidOneLowerCaseOneNumberPassword() {
-        let loginController = LoginController(loginOperations: mockLoginOperations,
-                                              email: email,
-                                              password: "p4")
         
         XCTAssertFalse(loginController.isValidPassword)
     }
